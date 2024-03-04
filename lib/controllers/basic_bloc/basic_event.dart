@@ -14,3 +14,14 @@ class ChangeTextToDisplay extends BasicEvent {
   @override
   List<Object?> get props => [text];
 }
+
+
+class ChangeBackgroundColorToDisplay extends BasicEvent {
+  ChangeBackgroundColorToDisplay({
+    required this.color,
+  });
+  final Color color;
+
+  @override
+  List<Object?> get props => [color];
+}

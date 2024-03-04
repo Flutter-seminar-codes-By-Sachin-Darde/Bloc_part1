@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:app/controllers/basic_bloc/basic_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +24,7 @@ class BasicBlocScreenConsumer extends StatelessWidget {
     return BlocBuilder<BasicBloc, BasicState>(
       builder: (context, state) {
         return Scaffold(
+          backgroundColor: state.color,
           body: SafeArea(
               child: Column(
             children: [
@@ -63,6 +66,18 @@ class BasicBlocScreenConsumer extends StatelessWidget {
                     onPressed: () {
                       BlocProvider.of<BasicBloc>(context)
                           .add(ChangeTextToDisplay(text: 'Button'));
+                    },
+                  ),
+                  ElevatedButton(
+                    child: const Text('Change color to something'),
+                    onPressed: () {
+                      BlocProvider.of<BasicBloc>(context).add(
+                          ChangeBackgroundColorToDisplay(
+                              color: [
+                        Colors.red,
+                        Colors.pink,
+                        Colors.blue
+                      ][Random().nextInt(3)]));
                     },
                   ),
                 ],

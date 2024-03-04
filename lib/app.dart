@@ -1,8 +1,8 @@
-import 'package:app/controllers/login_bloc/login_bloc.dart';
-import 'package:app/views/auth/login_screen.dart';
-import 'package:app/views/home_screen/home_screen.dart';
+import 'package:app/views/learn_screen/add_sub_bloc_screen.dart';
+import 'package:app/views/learn_screen/add_sub_stateful_screen.dart';
+import 'package:app/views/learn_screen/loader_with_stateless_adv_bloc.dart';
+import 'package:app/views/learn_screen/loader_with_stateless_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -13,7 +13,7 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.green),
       darkTheme: ThemeData(primarySwatch: Colors.grey),
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: LoaderBlocAdvWithStatelessWithCubit(),
     );
   }
 }

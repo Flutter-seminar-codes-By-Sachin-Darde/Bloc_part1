@@ -9,15 +9,13 @@ class AddSubScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddSubBloc(),
-      child: AddSubScreenConsumer(),
+      child: const AddSubScreenConsumer(),
     );
   }
 }
 
 class AddSubScreenConsumer extends StatelessWidget {
-  AddSubScreenConsumer({super.key});
-  final TextEditingController number1 = TextEditingController();
-  final TextEditingController number2 = TextEditingController();
+  const AddSubScreenConsumer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,35 +29,34 @@ class AddSubScreenConsumer extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TextField(
-                    controller: number1,
+                    controller: state.number1Controller,
                     decoration: const InputDecoration(label: Text('Number 1')),
                   ),
                   TextField(
-                    controller: number2,
+                    controller: state.number2Controller,
                     decoration: const InputDecoration(label: Text('Number 2')),
                   ),
                   Row(
                     children: [
                       ElevatedButton(
                           onPressed: () {
-                            int no1 = int.parse(number1.text);
-                            int no2 = int.parse(number2.text);
                             BlocProvider.of<AddSubBloc>(context)
-                                .add(AddEvent(no1: no1, no2: no2));
+                                .add(SmartEvent(operation: 'ADD'));
                           },
                           child: const Text('Add Me')),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       ElevatedButton(
                           onPressed: () {
-                            int no1 = int.parse(number1.text);
-                            int no2 = int.parse(number2.text);
                             BlocProvider.of<AddSubBloc>(context)
-                                .add(SubEvent(no1: no1, no2: no2));
+                                .add(SmartEvent(operation: 'SUB'));
                           },
                           child: const Text('Sub Me'))
                     ],
                   ),
                   Text(
-                      'Result: ${state.resultReady ? '${state.operation} ${state.result}' : "NA"}')
+                      'Result: ${state.result != null ? '${state.result}' : "NA"}')
                 ]),
           ),
         );

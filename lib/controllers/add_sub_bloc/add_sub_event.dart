@@ -6,27 +6,18 @@ class AddSubEvent extends Equatable {
 }
 
 class AddEvent extends AddSubEvent {
-  final int no1;
-  final int no2;
-
-  AddEvent({
-    required this.no1,
-    required this.no2,
-  });
-
   @override
-  List<Object?> get props => [no1, no2];
+  List<Object?> get props => [];
 }
 
 class SubEvent extends AddSubEvent {
-  final int no1;
-  final int no2;
-
-  SubEvent({
-    required this.no1,
-    required this.no2,
-  });
-
   @override
-  List<Object?> get props => [no1, no2];
+  List<Object?> get props => [];
+}
+
+class SmartEvent extends AddSubEvent {
+  final String operation;
+  SmartEvent({required this.operation});
+  @override
+  List<Object?> get props => [operation];
 }

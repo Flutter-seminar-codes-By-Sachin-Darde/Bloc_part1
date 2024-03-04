@@ -1,24 +1,31 @@
 part of 'add_sub_bloc.dart';
 
 class AddSubState extends Equatable {
-  final bool resultReady;
-  final String operation;
-  final int result;
+  final double? result;
+  final TextEditingController number1Controller;
+  final TextEditingController number2Controller;
   const AddSubState(
-      {this.result = 0, this.resultReady = false, this.operation = ''});
+      {this.result,
+      required this.number1Controller,
+      required this.number2Controller,
+      });
 
   @override
-  List<Object?> get props => [resultReady, operation, result];
+  List<Object?> get props => [
+        result,
+        number1Controller,
+        number2Controller,
+      ];
 
   AddSubState copyWith({
-    final bool? resultReady,
-    final String? operation,
-    final int? result,
+    final double? result,
+    final TextEditingController? number1Controller,
+    final TextEditingController? number2Controller,
   }) {
     return AddSubState(
-      operation: operation ?? this.operation,
       result: result ?? this.result,
-      resultReady: resultReady ?? this.resultReady,
+      number1Controller: number1Controller ?? this.number1Controller,
+      number2Controller: number2Controller ?? this.number2Controller,
     );
   }
 }
